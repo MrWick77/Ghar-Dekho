@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>House Price Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Ghar-Dekho</h1>
+    <form action="/predict" method="post" id="predictionForm">
+      <div class="form-group">
+        <label for="area">Area (sq. ft.):</label>
+        <input type="text" id="area" name="area" required>
+      </div>
+      <div class="form-group">
+        <label for="bhk">Number of Bedrooms (BHK):</label>
+        <input type="text" id="bhk" name="bhk" required>
+      </div>
+      <div class="form-group">
+        <label for="age">Age of Property (years):</label>
+        <input type="text" id="age" name="age" required>
+      </div>
+      <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" id="city" name="city" required>
+      </div>
+      <div class="form-group">
+        <label for="state">State:</label>
+        <input type="text" id="state" name="state" required>
+      </div>
+      <button type="submit">Predict</button>
+    </form>
+    <div id="predictionResult">
+      {% if prediction_text %}
+      <h2>{{ prediction_text }}</h2>
+      {% endif %}
+      {% if error_message %}
+  <p style="color: red;">{{ error_message }}</p>  {% endif %}
+
+    </div>
+  </div>
+</body>
+</html>
